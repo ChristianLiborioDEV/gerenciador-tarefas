@@ -1,0 +1,128 @@
+/* Reset básico — remove estilos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Página geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 32px;
+    max-width: 700px;    /* limita a largura */
+    margin: 0 auto;      /* centraliza na página */
+}
+
+/* Título */
+h1 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #222;
+}
+
+/* Áreas de formulário e pesquisa */
+#divEnvio, #divPesquisa {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#divPesquisa {
+    flex-direction: row; /* coloca input e botão lado a lado */
+    align-items: center;
+}
+
+#divPesquisa button {
+    white-space: nowrap; /* impede o texto do botão de quebrar linha */
+    width: auto;         /* botão só ocupa o tamanho do texto */
+}
+
+.opcao-prioridade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Inputs de texto */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+/* Botões */
+button {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+/* Lista de tarefas */
+#listaTarefas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Cada tarefa */
+#listaTarefas li {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #ccc; /* cor muda conforme prioridade */
+}
+
+/* Prioridades — borda colorida à esquerda */
+.alta  { border-left-color: #e74c3c; } /* vermelho */
+.media { border-left-color: #f39c12; } /* amarelo */
+.baixa { border-left-color: #2ecc71; } /* verde */
+
+/* Tarefa realizada */
+.realizada {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+/* Botões dentro da tarefa */
+.btn-concluir, .btn-remover {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-left: 8px;
+}
+
+.btn-remover {
+    background-color: #e74c3c;
+}
+
+.btn-remover:hover {
+    background-color: #c0392b;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #444;
+}

@@ -70,3 +70,15 @@ const buscarPorTitulo = (titulo) => {
 
 //console.log(buscarPorTitulo("lavar")); 
 //console.log(buscarPorTitulo("LAVAR")); 
+
+/* -------------------------------------------------------------------------------------------------------------------------------------*/
+//Função que vai receber os dados vindo do html
+const renderizarTarefas = (arrayTarefas) => {
+    const lista = document.getElementById("listaTarefas")
+    lista.innerHTML = "";
+    const item = document.createElement("li")
+    innerHTML = `<span>${tarefas.titulo}</span>`
+    lista.appendChild(item)
+}
+
+renderizarTarefas(tarefas)
