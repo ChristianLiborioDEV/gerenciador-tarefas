@@ -96,9 +96,9 @@ button:hover {
 }
 
 /* Prioridades — borda colorida à esquerda */
-.alta  { border-left-color: #e74c3c; } /* vermelho */
-.media { border-left-color: #f39c12; } /* amarelo */
-.baixa { border-left-color: #2ecc71; } /* verde */
+#listaTarefas li.alta  { border-left-color: #e74c3c; }/* vermelho */
+#listaTarefas li.media { border-left-color: #f39c12; }/* amarelo */
+#listaTarefas li.baixa { border-left-color: #2ecc71; }/* verde */
 
 /* Tarefa realizada */
 .realizada {
