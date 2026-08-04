@@ -115,3 +115,17 @@ const renderizarTarefas = (arrayTarefas) => {
 
 renderizarTarefas(tarefas)
 
+// Pegar os elementos do HTML
+const inputTitulo = document.getElementById("tituloTarefa");
+const btnAdicionar = document.querySelector("#divEnvio button");
+
+// Evento de clique no botão adicionar
+btnAdicionar.addEventListener("click", () => {
+    const titulo = inputTitulo.value;
+    const prioridadeSelecionada = document.querySelector('input[name="prioridade"]:checked');
+    // 1. verificar se titulo não está vazio e se uma prioridade foi selecionada
+    console.log(titulo)
+    // 2. chamar adicionarTarefa com os valores certos
+    // 3. limpar o input (inputTitulo.value = "")
+    // 4. chamar renderizarTarefas(tarefas)
+});
