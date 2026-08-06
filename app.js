@@ -23,6 +23,7 @@ const adicionarTarefa = (titulo, prioridade) => {
     const novaTarefa = {id: proximoId(), titulo: titulo, prioridade: prioridade, realizada: false, dataCriacao: new Date()}
     tarefas.push(novaTarefa)
     return novaTarefa
+    alert("acionada")
 }
 adicionarTarefa("Estudar JavaScript", "alta");
 
@@ -123,9 +124,15 @@ const btnAdicionar = document.querySelector("#divEnvio button");
 btnAdicionar.addEventListener("click", () => {
     const titulo = inputTitulo.value;
     const prioridadeSelecionada = document.querySelector('input[name="prioridade"]:checked');
-    // 1. verificar se titulo não está vazio e se uma prioridade foi selecionada
-    console.log(titulo)
+    // 1. verificar se titulo não está vazio e se uma prioridade foi selecionada    
     // 2. chamar adicionarTarefa com os valores certos
     // 3. limpar o input (inputTitulo.value = "")
     // 4. chamar renderizarTarefas(tarefas)
+    if(titulo.trim().length > 3 && prioridadeSelecionada){
+        adicionarTarefa(titulo, prioridadeSelecionada.value)
+        inputTitulo.value=""
+        renderizarTarefas(tarefas)
+    } else {
+        alert("Titulo inválido ou prioridade não selecionada")
+    }
 });
