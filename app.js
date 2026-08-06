@@ -136,3 +136,18 @@ btnAdicionar.addEventListener("click", () => {
         alert("Titulo inválido ou prioridade não selecionada")
     }
 });
+
+
+// Botão de pesquisa
+const inputPesquisa = document.getElementById("buscarTarefa")
+const btnPesquisa = document.querySelector("#divPesquisa button");
+
+btnPesquisa.addEventListener("click", () => {
+    const tarefaPesquisar = inputPesquisa.value;
+    if(tarefaPesquisar.trim().length > 3){
+       const resultado = buscarPorTitulo(tarefaPesquisar)
+       renderizarTarefas(resultado)
+    } else {
+        alert("Campo vazio ou preenchido incorretamente")
+    }
+});
