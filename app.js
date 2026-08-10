@@ -116,11 +116,11 @@ const renderizarTarefas = (arrayTarefas) => {
 
 renderizarTarefas(tarefas)
 
-// Pegar os elementos do HTML
+// botão adicionar
 const inputTitulo = document.getElementById("tituloTarefa");
 const btnAdicionar = document.querySelector("#divEnvio button");
 
-// Evento de clique no botão adicionar
+
 btnAdicionar.addEventListener("click", () => {
     const titulo = inputTitulo.value;
     const prioridadeSelecionada = document.querySelector('input[name="prioridade"]:checked');
