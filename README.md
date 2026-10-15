@@ -14,8 +14,10 @@ com suporte a prioridades, busca e filtros.
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
 ![CSS3](https://img.shields.io/badge/CSS3-blue)
 
-## Como rodar o projeto
+## Vercel
+https://gerenciador-tarefas-1.vercel.app/
 
+## Como rodar o projeto
 1. Clone o repositório:
 
 git clone https://github.com/ChristianLiborioDEV/gerenciador-tarefas.git
