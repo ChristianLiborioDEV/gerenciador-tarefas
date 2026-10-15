@@ -23,7 +23,7 @@ const adicionarTarefa = (titulo, prioridade) => {
     const novaTarefa = {id: proximoId(), titulo: titulo, prioridade: prioridade, realizada: false, dataCriacao: new Date()}
     tarefas.push(novaTarefa)
     return novaTarefa
-    alert("acionada")
+    alert("adicionada")
 }
 adicionarTarefa("Estudar JavaScript", "alta");
 
