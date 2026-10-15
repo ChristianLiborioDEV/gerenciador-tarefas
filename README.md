@@ -31,6 +31,7 @@ Não é necessário instalar dependências, o projeto usa JavaScript puro.
 - Closures — gerador de ids únicos com contador encapsulado
 - Spread  — atualização de objetos sem mutar o original
 - Manipulação do DOM — renderização dinâmica da lista de tarefas
+- Módulos ES6 — código organizado em arquivos separados com import/export
 
 
 ## Exemplos de uso 
