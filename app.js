@@ -1,5 +1,5 @@
 import {tarefas} from "./dados.js"
-import {adicionarTarefa, buscarPorTitulo} from "./tarefas.js"
+import {adicionarTarefa, buscarPorTitulo, filtrarPorStatus} from "./tarefas.js"
 import {renderizarTarefas} from "./interface.js"
 
 
@@ -25,9 +25,15 @@ btnAdicionar.addEventListener("click", () => {
 });
 
 
-// Botão de pesquisa
+
 const inputPesquisa = document.getElementById("buscarTarefa")
-const btnPesquisa = document.querySelector("#divPesquisa button");
+const btnPesquisa = document.getElementById("pesquisa");
+const btnMostrarPendentes = document.getElementById("pendentes")
+
+btnMostrarPendentes.addEventListener("click", () => {
+    const tarefaEmAberto = filtrarPorStatus(false)
+    renderizarTarefas(tarefaEmAberto)
+})
 
 btnPesquisa.addEventListener("click", () => {
     const tarefaPesquisar = inputPesquisa.value;
