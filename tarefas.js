@@ -1,6 +1,6 @@
 
 // export nomeado -> import com chaves, export default -> import sem chaves, focar em exports nomeados
-import {tarefas, proximoId} from "./dados.js"
+import {tarefas, proximoId} from "./src/dados.js"
 
 /* -------------------------------------------------------------------------------------------------------------------------------------*/
 // Adicionar nova tarefa

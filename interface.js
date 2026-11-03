@@ -1,4 +1,4 @@
-import {tarefas} from "./dados.js"
+import {tarefas} from "./src/dados.js"
 import {marcarRealizada, removerTarefa} from "./tarefas.js"
 
 
