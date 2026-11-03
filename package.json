@@ -1,0 +1,25 @@
+{
+  "name": "gerenciador-tarefas",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido para praticar JavaScript puro — manipulação de arrays,\r funções, closures e DOM. Consiste em um sistema de gerenciamento de tarefas\r com suporte a prioridades, busca e filtros.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianLiborioDEV/gerenciador-tarefas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ChristianLiborioDEV/gerenciador-tarefas/issues"
+  },
+  "homepage": "https://github.com/ChristianLiborioDEV/gerenciador-tarefas#readme",
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
