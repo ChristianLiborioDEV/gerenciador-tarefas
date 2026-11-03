@@ -4,7 +4,8 @@
   "description": "Projeto desenvolvido para praticar JavaScript puro — manipulação de arrays,\r funções, closures e DOM. Consiste em um sistema de gerenciamento de tarefas\r com suporte a prioridades, busca e filtros.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/ChristianLiborioDEV/gerenciador-tarefas/issues"
   },
@@ -21,5 +22,9 @@
   "dependencies": {
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.2.1",
+    "vite": "^8.3.5"
   }
 }
