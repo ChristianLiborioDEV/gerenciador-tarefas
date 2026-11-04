@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import ItemTarefa from "./componente/ItemTarefa.jsx"
+import ItemTarefa from "./componentes/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
-import { concluirTarefa, removerTarefa, adicionarTarefa, tituloValido } from './tarefas.js';
+import { concluirTarefa, removerTarefa, adicionarTarefa } from './tarefas.js';
+import Formulario from './componentes/Formulario.jsx';
 
 const App = () => {
 
     const [tarefas, setTarefas] = useState(tarefasIniciais)
-    const [titulo, setTitulo] = useState("")
-    const [prioridade, setPrioridade] = useState("alta")
 
     const handleRemover = (id) => {
         setTarefas(removerTarefa(tarefas, id))
@@ -17,26 +16,13 @@ const App = () => {
         setTarefas(concluirTarefa(tarefas, id))
     }
 
-    const handleAdicionar = () => {
-        if (tituloValido(titulo)) {
-            setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
-            setTitulo("")
-        } else {
-            alert("Titulo Invalido")
-        }
-
-    }
-
+    const handleAdicionar = (titulo, prioridade) => {
+    setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
+}
     return (
         <div>
             <h1>Gerenciador de Tarefas</h1>
-            <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" placeholder="Insira o titulo da tarefa" />
-            <select value={prioridade} onChange={(e) => setPrioridade(e.target.value)}>
-                <option value="alta">Alta</option>
-                <option value="media">Media</option>
-                <option value="baixa">Baixa</option>
-            </select>
-            <button onClick={handleAdicionar}>Adicionar</button>
+            <Formulario onAdicionar={handleAdicionar}/>
             <ul id="listaTarefas">
                 {tarefas.map(tarefa => (<ItemTarefa
                     key={tarefa.id}
