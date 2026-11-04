@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import ItemTarefa from "./ItemTarefa.jsx"
+import ItemTarefa from "./componente/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
+import { concluirTarefa, removerTarefa, adicionarTarefa } from './tarefas.js';
 
 const App = () => {
 
@@ -8,34 +9,33 @@ const App = () => {
     const [titulo, setTitulo] = useState("")
     const [prioridade, setPrioridade] = useState("alta")
 
-    const concluirTarefa = (id) => {
-        const tarefaConcluida = tarefas
-            .map(tarefa => {
-                if (tarefa.id === id) {
-                    return { ...tarefa, realizada: true }
-                } else {
-                    return tarefa
-                }
-            })
-        setTarefas(tarefaConcluida)
+    const handleRemover = (id) => {
+        setTarefas(removerTarefa(tarefas, id))
     }
 
-
-    const removerTarefa = (id) => {
-        const tarefasRestantes = tarefas.filter(tarefa => tarefa.id !== id)
-        setTarefas(tarefasRestantes)
+    const handleConcluir = (id) => {
+        setTarefas(concluirTarefa(tarefas, id))
     }
 
+    const handleAdicionar = () => {
+        if (titulo.trim().length > 3) {
+            setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
+            setTitulo("")
+        } else {
+            alert("Titulo Invalido")
+        }
+    }
 
     return (
         <div>
             <h1>Gerenciador de Tarefas</h1>
-            <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" placeholder="Insira o titulo da tarefa"/>
+            <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" placeholder="Insira o titulo da tarefa" />
             <select value={prioridade} onChange={(e) => setPrioridade(e.target.value)}>
                 <option value="alta">Alta</option>
                 <option value="media">Media</option>
                 <option value="baixa">Baixa</option>
             </select>
+            <button onClick={handleAdicionar}>Adicionar</button>
             <ul id="listaTarefas">
                 {tarefas.map(tarefa => (<ItemTarefa
                     key={tarefa.id}
@@ -43,8 +43,8 @@ const App = () => {
                     titulo={tarefa.titulo}
                     prioridade={tarefa.prioridade}
                     realizada={tarefa.realizada}
-                    onConcluir={concluirTarefa}
-                    onRemover={removerTarefa} />))}
+                    onConcluir={handleConcluir}
+                    onRemover={handleRemover} />))}
             </ul>
         </div>
     )
