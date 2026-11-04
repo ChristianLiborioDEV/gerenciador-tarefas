@@ -10,16 +10,20 @@ const App = () => {
         const tarefaConcluida = tarefas
             .map(tarefa => {
                 if (tarefa.id === id) {
-                    return {...tarefa, realizada: true}
+                    return { ...tarefa, realizada: true }
                 } else {
                     return tarefa
                 }
-             }) 
-             
-             console.log("ok")
-
+            })
         setTarefas(tarefaConcluida)
     }
+
+
+    const removerTarefa = (id) => {
+        const tarefasRestantes = tarefas.filter(tarefa => tarefa.id !== id)
+        setTarefas(tarefasRestantes)
+    }
+
 
     return (
         <div>
@@ -31,7 +35,8 @@ const App = () => {
                     titulo={tarefa.titulo}
                     prioridade={tarefa.prioridade}
                     realizada={tarefa.realizada}
-                    onConcluir={concluirTarefa} />))}
+                    onConcluir={concluirTarefa}
+                    onRemover={removerTarefa} />))}
             </ul>
         </div>
     )

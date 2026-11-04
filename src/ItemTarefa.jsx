@@ -11,7 +11,7 @@ const ItemTarefa = ({ id, titulo, prioridade, realizada, onConcluir, onRemover }
             </span>
             <div>
                 {!realizada && <button className="btn-concluir" onClick={() => onConcluir(id)}>Concluir</button>}
-                <button className="btn-remover"> Remover</button>
+                <button className="btn-remover" onClick={() => onRemover(id)}>Remover</button>
             </div>
         </li>
     )
