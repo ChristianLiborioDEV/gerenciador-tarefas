@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ItemTarefa from "./componente/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
-import { concluirTarefa, removerTarefa, adicionarTarefa } from './tarefas.js';
+import { concluirTarefa, removerTarefa, adicionarTarefa, tituloValido } from './tarefas.js';
 
 const App = () => {
 
@@ -18,12 +18,13 @@ const App = () => {
     }
 
     const handleAdicionar = () => {
-        if (titulo.trim().length > 3) {
+        if (tituloValido(titulo)) {
             setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
             setTitulo("")
         } else {
             alert("Titulo Invalido")
         }
+
     }
 
     return (

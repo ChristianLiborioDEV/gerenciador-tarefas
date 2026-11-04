@@ -1,6 +1,5 @@
 import {proximoId} from "./dados.js"
 
-
 export const concluirTarefa = (tarefas, id) => {
     return tarefas
         .map(tarefa => {
@@ -20,3 +19,6 @@ export const adicionarTarefa = (tarefas, titulo, prioridade) => {
     const novaTarefa = {id: proximoId(), titulo: titulo, prioridade: prioridade, realizada: false, dataCriacao: new Date()}
     return [...tarefas, novaTarefa]
 }
+
+
+export const tituloValido = (titulo) => titulo.trim().length > 3
