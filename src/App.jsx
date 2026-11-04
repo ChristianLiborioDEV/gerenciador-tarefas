@@ -19,9 +19,13 @@ const App = () => {
     const handleAdicionar = (titulo, prioridade) => {
     setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
 }
+
+    const pendentes = tarefas.filter(tarefa => !tarefa.realizada).length
+
     return (
         <div>
             <h1>Gerenciador de Tarefas</h1>
+            <p>Pendentes: {pendentes}</p>
             <Formulario onAdicionar={handleAdicionar}/>
             <ul id="listaTarefas">
                 {tarefas.map(tarefa => (<ItemTarefa
