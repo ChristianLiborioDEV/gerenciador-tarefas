@@ -19,28 +19,31 @@ const App = () => {
     }
 
     const handleAdicionar = (titulo, prioridade) => {
-    setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
-}
+        setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
+    }
 
     const pendentes = tarefas.filter(tarefa => !tarefa.realizada).length
 
     const resultadoBusca = buscarPorTitulo(tarefas, busca)
 
     const tarefasVisiveis = somentePendentes
-    ? resultadoBusca.filter(tarefa => !tarefa.realizada)
-    : resultadoBusca
+        ? resultadoBusca.filter(tarefa => !tarefa.realizada)
+        : resultadoBusca
 
-    
+
 
     return (
         <div>
             <h1>Gerenciador de Tarefas</h1>
-            <p>Pendentes: {pendentes}</p>
-            <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Busque uma tarefa"></input>
-            <button onClick={() => setSomentePendentes(!somentePendentes)}>
-                {somentePendentes ? "Mostrar todas" : "Mostrar pendentes"}
-            </button>
-            <Formulario onAdicionar={handleAdicionar}/>
+            <p id='pendentes'>Pendentes: {pendentes}</p>
+            <div id='divEnvio'>
+                <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Busque uma tarefa"></input>
+                <button onClick={() => setSomentePendentes(!somentePendentes)}>
+                    {somentePendentes ? "Mostrar todas" : "Mostrar pendentes"}
+                </button>
+            </div>
+
+            <Formulario onAdicionar={handleAdicionar} />
             <ul id="listaTarefas">
                 {tarefasVisiveis.map(tarefa => (<ItemTarefa
                     key={tarefa.id}

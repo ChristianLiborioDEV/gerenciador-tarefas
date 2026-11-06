@@ -14,7 +14,7 @@ const Formulario = ({ onAdicionar }) => {
         }
     }
 
-    return (<div>
+    return (<div id="divEnvio"> 
         <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" placeholder="Insira o titulo da tarefa" />
         <select value={prioridade} onChange={(e) => setPrioridade(e.target.value)}>
             <option value="alta">Alta</option>
