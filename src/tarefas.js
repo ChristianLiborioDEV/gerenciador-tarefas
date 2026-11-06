@@ -22,3 +22,8 @@ export const adicionarTarefa = (tarefas, titulo, prioridade) => {
 
 
 export const tituloValido = (titulo) => titulo.trim().length > 3
+
+export const buscarPorTitulo = (tarefas, busca) => {
+        const pesquisarTarefa = tarefas.filter(a => a.titulo.toLowerCase().includes(busca.toLowerCase()))
+   return pesquisarTarefa
+}

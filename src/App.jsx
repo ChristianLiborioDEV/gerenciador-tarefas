@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import ItemTarefa from "./componentes/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
-import { concluirTarefa, removerTarefa, adicionarTarefa } from './tarefas.js';
+import { concluirTarefa, removerTarefa, adicionarTarefa, buscarPorTitulo } from './tarefas.js';
 import Formulario from './componentes/Formulario.jsx';
 
 const App = () => {
 
     const [tarefas, setTarefas] = useState(tarefasIniciais)
+    const [busca, setBusca] = useState("")
 
     const handleRemover = (id) => {
         setTarefas(removerTarefa(tarefas, id))
@@ -21,14 +22,17 @@ const App = () => {
 }
 
     const pendentes = tarefas.filter(tarefa => !tarefa.realizada).length
+    
+    const tarefasVisiveis = buscarPorTitulo(tarefas, busca)
 
     return (
         <div>
             <h1>Gerenciador de Tarefas</h1>
             <p>Pendentes: {pendentes}</p>
+            <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Busque um tarefa"></input>
             <Formulario onAdicionar={handleAdicionar}/>
             <ul id="listaTarefas">
-                {tarefas.map(tarefa => (<ItemTarefa
+                {tarefasVisiveis.map(tarefa => (<ItemTarefa
                     key={tarefa.id}
                     id={tarefa.id}
                     titulo={tarefa.titulo}
