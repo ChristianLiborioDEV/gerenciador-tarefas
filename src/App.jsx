@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ItemTarefa from "./componentes/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
-import { concluirTarefa, removerTarefa, adicionarTarefa, buscarPorTitulo } from './tarefas.js';
+import { concluirTarefa, removerTarefa, adicionarTarefa, buscarPorTitulo, desfazerTarefa } from './tarefas.js';
 import Formulario from './componentes/Formulario.jsx';
 
 const App = () => {
@@ -20,6 +20,10 @@ const App = () => {
 
     const handleAdicionar = (titulo, prioridade) => {
         setTarefas(adicionarTarefa(tarefas, titulo, prioridade))
+    }
+
+    const handleDesfazer = (id) => {
+        setTarefas(desfazerTarefa(tarefas, id))
     }
 
     const pendentes = tarefas.filter(tarefa => !tarefa.realizada).length
@@ -52,7 +56,8 @@ const App = () => {
                     prioridade={tarefa.prioridade}
                     realizada={tarefa.realizada}
                     onConcluir={handleConcluir}
-                    onRemover={handleRemover} />))}
+                    onRemover={handleRemover}
+                    onDesfazer={handleDesfazer} />))}
             </ul>
         </div>
     )

@@ -27,3 +27,17 @@ export const buscarPorTitulo = (tarefas, busca) => {
         const pesquisarTarefa = tarefas.filter(a => a.titulo.toLowerCase().includes(busca.toLowerCase()))
    return pesquisarTarefa
 }
+
+
+
+export const desfazerTarefa = (tarefas, id) => {
+    return tarefas
+        .map(tarefa => {
+            if (tarefa.id === id) {
+                return { ...tarefa, realizada: false }
+            } else {
+                return tarefa
+            }
+        })
+
+}
