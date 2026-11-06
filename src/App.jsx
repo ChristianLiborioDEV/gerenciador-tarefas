@@ -8,6 +8,7 @@ const App = () => {
 
     const [tarefas, setTarefas] = useState(tarefasIniciais)
     const [busca, setBusca] = useState("")
+    const [somentePendentes, setSomentePendentes] = useState(false)
 
     const handleRemover = (id) => {
         setTarefas(removerTarefa(tarefas, id))
@@ -22,14 +23,23 @@ const App = () => {
 }
 
     const pendentes = tarefas.filter(tarefa => !tarefa.realizada).length
+
+    const resultadoBusca = buscarPorTitulo(tarefas, busca)
+
+    const tarefasVisiveis = somentePendentes
+    ? resultadoBusca.filter(tarefa => !tarefa.realizada)
+    : resultadoBusca
+
     
-    const tarefasVisiveis = buscarPorTitulo(tarefas, busca)
 
     return (
         <div>
             <h1>Gerenciador de Tarefas</h1>
             <p>Pendentes: {pendentes}</p>
-            <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Busque um tarefa"></input>
+            <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Busque uma tarefa"></input>
+            <button onClick={() => setSomentePendentes(!somentePendentes)}>
+                {somentePendentes ? "Mostrar todas" : "Mostrar pendentes"}
+            </button>
             <Formulario onAdicionar={handleAdicionar}/>
             <ul id="listaTarefas">
                 {tarefasVisiveis.map(tarefa => (<ItemTarefa
