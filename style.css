@@ -44,11 +44,6 @@ h1 {
     width: auto;         /* botão só ocupa o tamanho do texto */
 }
 
-.opcao-prioridade {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
 /* Inputs de texto */
 input[type="text"] {
@@ -125,4 +120,19 @@ h2 {
     font-size: 20px;
     margin-bottom: 12px;
     color: #444;
+}
+
+#divPesquisa input[type="text"] {
+    flex: 1;   
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+#pendentes {
+    margin-bottom: 12px;
 }
