@@ -112,12 +112,16 @@ button:hover {
     background-color: #e74c3c;
 }
 
+.btn-remover:hover {
+    background-color: #c0392b;
+}
+
 .btn-desfazer {
     background-color: #09b82f;
 }
 
-.btn-remover:hover {
-    background-color: #c0392b;
+.btn-desfazer:hover {
+    background-color: #044913;
 }
 
 h2 {
