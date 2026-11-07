@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import ItemTarefa from "./componentes/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
-import { concluirTarefa, removerTarefa, adicionarTarefa, buscarPorTitulo, desfazerTarefa } from './tarefas.js';
+import { concluirTarefa, removerTarefa, adicionarTarefa, buscarPorTitulo, desfazerTarefa, ordenarPorPrioridade } from './tarefas.js';
 import Formulario from './componentes/Formulario.jsx';
 
 const App = () => {
 
     const [tarefas, setTarefas] = useState(() => {
         const salvas = localStorage.getItem("tarefas")
-        return salvas ? JSON.parse(localStorage.getItem("tarefas")) : tarefasIniciais
+        return salvas ? JSON.parse(salvas) : tarefasIniciais
     })
 
     const [busca, setBusca] = useState("")
     const [somentePendentes, setSomentePendentes] = useState(false)
+    const [ordenado, setOrdenado] = useState(false)
 
     useEffect(() => {
         localStorage.setItem("tarefas", JSON.stringify(tarefas))
@@ -34,13 +35,19 @@ const App = () => {
         setTarefas(desfazerTarefa(tarefas, id))
     }
 
+
     const pendentes = tarefas.filter(tarefa => !tarefa.realizada).length
 
     const resultadoBusca = buscarPorTitulo(tarefas, busca)
 
-    const tarefasVisiveis = somentePendentes
+
+
+    const filtradas = somentePendentes
         ? resultadoBusca.filter(tarefa => !tarefa.realizada)
         : resultadoBusca
+
+
+    const tarefasVisiveis = ordenado ? ordenarPorPrioridade(filtradas) : filtradas
 
 
 
@@ -53,9 +60,9 @@ const App = () => {
                 <button onClick={() => setSomentePendentes(!somentePendentes)}>
                     {somentePendentes ? "Mostrar todas" : "Mostrar pendentes"}
                 </button>
+                <button onClick={() => setOrdenado(!ordenado)}>{ordenado ? "Ordem original" : "Ordenar por prioridade"}</button>
             </div>
-
-            <Formulario onAdicionar={handleAdicionar} />
+            <Formulario onAdicionar={handleAdicionar}/>
             <ul id="listaTarefas">
                 {tarefasVisiveis.map(tarefa => (<ItemTarefa
                     key={tarefa.id}
