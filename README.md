@@ -66,6 +66,7 @@ npm run dev
 - Inputs controlados — o valor digitado fica guardado no state
 - Dados derivados — contador, busca e filtro calculados a partir do state
 - Renderização condicional — o botão "Concluir" some nas tarefas já concluídas
+- `useEffect` e `localStorage`: as tarefas continuam salvas depois de recarregar a página
 
 ## Exemplos de uso
 

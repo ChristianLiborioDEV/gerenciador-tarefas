@@ -28,8 +28,6 @@ export const buscarPorTitulo = (tarefas, busca) => {
    return pesquisarTarefa
 }
 
-
-
 export const desfazerTarefa = (tarefas, id) => {
     return tarefas
         .map(tarefa => {
@@ -40,4 +38,9 @@ export const desfazerTarefa = (tarefas, id) => {
             }
         })
 
+}
+
+export const ordenarPorPrioridade = (tarefas) => {
+    const ordem = {alta: 1, media: 2, baixa: 3}
+    return [...tarefas].sort((a, b) => ordem[a.prioridade] - ordem[b.prioridade])
 }
