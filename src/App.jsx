@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ItemTarefa from "./componentes/ItemTarefa.jsx"
 import { tarefas as tarefasIniciais } from "./dados.js"
 import { concluirTarefa, removerTarefa, adicionarTarefa, buscarPorTitulo, desfazerTarefa } from './tarefas.js';
@@ -6,9 +6,17 @@ import Formulario from './componentes/Formulario.jsx';
 
 const App = () => {
 
-    const [tarefas, setTarefas] = useState(tarefasIniciais)
+    const [tarefas, setTarefas] = useState(() => {
+        const salvas = localStorage.getItem("tarefas")
+        return salvas ? JSON.parse(localStorage.getItem("tarefas")) : tarefasIniciais
+    })
+
     const [busca, setBusca] = useState("")
     const [somentePendentes, setSomentePendentes] = useState(false)
+
+    useEffect(() => {
+        localStorage.setItem("tarefas", JSON.stringify(tarefas))
+    }, [tarefas])
 
     const handleRemover = (id) => {
         setTarefas(removerTarefa(tarefas, id))

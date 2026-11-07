@@ -1,5 +1,3 @@
-import {proximoId} from "./dados.js"
-
 export const concluirTarefa = (tarefas, id) => {
     return tarefas
         .map(tarefa => {
@@ -16,7 +14,9 @@ export const removerTarefa = (tarefas, id) => {
 }
 
 export const adicionarTarefa = (tarefas, titulo, prioridade) => {
-    const novaTarefa = {id: proximoId(), titulo: titulo, prioridade: prioridade, realizada: false, dataCriacao: new Date()}
+    const maiorId = tarefas.reduce((maior, t) => Math.max(maior,t.id), 0)
+    const novoId = maiorId + 1;
+    const novaTarefa = {id: novoId, titulo: titulo, prioridade: prioridade, realizada: false, dataCriacao: new Date()}
     return [...tarefas, novaTarefa]
 }
 
